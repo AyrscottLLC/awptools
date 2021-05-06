@@ -23,7 +23,9 @@ if ( is_admin() ) {
   // require_once __DIR__ . '/admin/plugin-name-admin.php'; 
 }
 
+// callback function for shortocde
 function awp_copyright_notice() {
   return 'Ayrscott WordPress Tools Copyright Ayrscott, LLC';
 }
+// register a desired shortcode with parameters of shortcode, callback function
 add_shortcode('awp_copyright', 'awp_copyright_notice');
