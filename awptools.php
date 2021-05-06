@@ -1,7 +1,10 @@
 <?php
 /**
+* WordPress header requirements: https://developer.wordpress.org/plugins/plugin-basics/header-requirements/
+*
 * Plugin Name:      Ayrscott WordPress Tools
-* Description:      Our base WordPress library to fork new projects from.
+* Plugin URI:       https://github.com/AyrscottLLC/awptools
+* Description:      Ayrscott WordPress Tools standard WordPress plugin.
 * Author:           Jared De Blander, Ayrscott LLC
 * Author URI:       https://ayrscott.com/
 */
@@ -52,9 +55,10 @@ if ( is_admin() ) {
 
 // callback function for shortocde
 function awp_copyright_notice() {
+  // year LLC was founded and this plugin was started
   $min_year = 2021;
-  
-  
+
+  // show year range if appropriate and insure date displayed is the minimum copyright year
   $the_year = date("Y");
   if (intval($the_year) <= $min_year) {
     $the_year = $min_year;
