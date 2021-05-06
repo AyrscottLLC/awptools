@@ -51,6 +51,14 @@ if ( is_admin() ) {
     'admin_menu',                       // register an admin menu entry
     'awp_admin_menu_entry_main_menu'    // the callback to register the page's entry
   );
+  
+  
+  $admin_load = array();
+  $admin_load[] = __DIR__ . '/admin/cbj.php';
+  
+  foreach($admin_load as $key=>$val) {
+    if(file_exists($val)) require_once $val;
+  }
 }
 
 // callback function for shortocde
