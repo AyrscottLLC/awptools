@@ -1,17 +1,15 @@
 <?php
 /**
 * Plugin Name:      Ayrscott WordPress Tools
+* Description:      Our base WordPress library to fork new projects from.
 * Author:           Jared De Blander, Ayrscott LLC
 * Author URI:       https://ayrscott.com/
-* Description:      Our base WordPress library to fork new projects from.
 */
-
 
 // Check for a constant set by WordPress to ensure we are not being access directly
 if ( ! defined('ABSPATH') ) {
   exit;
 }
-
 
 // define locations of both this file on the filesystem and the URL path to this file
 define('AWPTOOLS_LOCATION_FILE', dirname(__FILE__));
@@ -24,3 +22,8 @@ if ( is_admin() ) {
   // sample include file
   // require_once __DIR__ . '/admin/plugin-name-admin.php'; 
 }
+
+function awp_copyright_notice() {
+  return 'Ayrscott WordPress Tools Copyright Ayrscott, LLC';
+}
+add_shortcode('awp_copyright', 'awp_copyright_notice');
