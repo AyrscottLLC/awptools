@@ -21,11 +21,48 @@ if ( is_admin() ) {
   
   // sample include file
   // require_once __DIR__ . '/admin/plugin-name-admin.php'; 
+  
+  function awp_admin_page_main_menu() {
+    echo '
+<div class="wrap">
+  <h2>Ayrscott WordPress Tools</h2>
+    '.awp_copyright_notice().'
+</div>
+    ';
+  }
+  
+  function awp_admin_menu_entry_main_menu()
+  {
+    add_menu_page(
+      'Ayrscott WordPress Tools',     // page title
+      'Ayrscott WP Tools',            // side menu title
+      'manage_options',               // what users have access
+      'awp-admin-main-menu',          // page slug
+      'awp_admin_page_main_menu',     // callback function to render the page
+      'dashicons-layout',             // dashicon (blank default is gear) https://developer.wordpress.org/resource/dashicons/
+      200                             // sort order
+    );
+  }
+  // register admin menu entry
+  add_action(
+    'admin_menu',                       // register an admin menu entry
+    'awp_admin_menu_entry_main_menu'    // the callback to register the page's entry
+  );
 }
 
 // callback function for shortocde
 function awp_copyright_notice() {
-  return 'Ayrscott WordPress Tools Copyright Ayrscott, LLC';
+  $min_year = 2021;
+  
+  
+  $the_year = date("Y");
+  if (intval($the_year) <= $min_year) {
+    $the_year = $min_year;
+  } else {
+    $the_year = $min_year . ' - '. $the_year;
+  }
+  
+  return 'Ayrscott WordPress Tools &copy; <a href="https://ayrscott.com/" target="_blank">Ayrscott, LLC</a> '.$the_year;
 }
 // register a desired shortcode with parameters of shortcode, callback function
 add_shortcode('awp_copyright', 'awp_copyright_notice');
