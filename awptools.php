@@ -78,3 +78,9 @@ function awp_copyright_notice() {
 }
 // register a desired shortcode with parameters of shortcode, callback function
 add_shortcode('awp_copyright', 'awp_copyright_notice');
+
+// bound/constrain a value to a range specified by min/max
+function awp_bound($x, $min, $max)
+{
+     return min(max($x, $min), $max);
+}
